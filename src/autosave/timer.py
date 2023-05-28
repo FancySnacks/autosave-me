@@ -22,9 +22,12 @@ class Timer:
         self._reset_timer()
 
         while self.active:
-            if self._time_to_save():
-                self.parent.event_save()
-                self._reset_timer()
+            try:
+                if self._time_to_save():
+                    self.parent.event_save()
+                    self._reset_timer()
+            except KeyboardInterrupt as e:
+                return 1
 
     def _reset_timer(self):
         self._start_time = time.time()

@@ -4,7 +4,7 @@ from autosave.timer import Timer
 
 
 class App:
-    def __init__(self, delay: int = 3):
+    def __init__(self, delay: int = 60):
         self.delay = delay
         self.timer = Timer(delay=delay, parent=self)
 
