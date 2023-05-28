@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
-from autosave.timer import Timer
+from autosave.app import App
 
 
 def main() -> int:
-    timer = Timer()
+    timer = App()
+    timer.start_timer()
 
     return 0
 
