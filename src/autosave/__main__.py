@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
+import keyboard
+
 
 def main() -> int:
+
     return 0
 
 
