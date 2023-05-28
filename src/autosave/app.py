@@ -2,16 +2,11 @@
 
 import keyboard
 
-from autosave.timer import Timer
-
 
 class App:
-    def __init__(self, delay: int = 60):
-        self.delay = delay
-        self.timer = Timer(delay=delay, parent=self)
-
-    def start_timer(self):
-        self.timer.set_timer()
+    def start_timer(self, timer, delay: int = 60):
+        self.timer = timer
+        self.timer.set_timer(delay)
 
     def event_timer_reset(self):
         self._print_begin_msg()
@@ -28,5 +23,5 @@ class App:
         print('[autosave-me] Autosave!')
 
     def _print_begin_msg(self):
-        print(f'[autosave-me] Next autosave in {self.delay} second(s) ({self.timer.save_time_estimated()})')
+        print(f'[autosave-me] Next autosave in {self.timer.delay} second(s) ({self.timer.save_time_estimated()})')
         print("[autosave-me] Press 'ctrl-c' to cancel timer")

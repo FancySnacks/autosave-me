@@ -24,14 +24,11 @@ class Timer:
     """
     Timer class with scheduled task.
 
-    delay: int
-        task frequency in seconds
     parent: TimerEvent
         an object that implements 'TimerEvent' protocol
     """
 
-    def __init__(self, delay: int, parent: TimerEvent):
-        self.delay = delay
+    def __init__(self, parent: TimerEvent):
         self.parent = parent
 
     @property
@@ -44,8 +41,9 @@ class Timer:
         formatted: str = f'{elapsed:.3f}'
         return float(formatted)
 
-    def set_timer(self):
+    def set_timer(self, delay: int):
         self.active = True
+        self.delay = delay
         self._reset_timer()
 
         while self.active:
