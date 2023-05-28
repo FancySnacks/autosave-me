@@ -1,3 +1,5 @@
+"""Class that controls and manages entirety of this program"""
+
 import keyboard
 
 from autosave.timer import Timer
@@ -14,7 +16,7 @@ class App:
     def event_timer_reset(self):
         self._print_begin_msg()
 
-    def event_save(self):
+    def event_timer_elapsed(self):
         App.autosave()
         self._print_saved_msg()
 

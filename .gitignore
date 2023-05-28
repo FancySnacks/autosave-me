@@ -9,6 +9,9 @@ __pycache__/
 # Pycharm
 .idea
 
+# TODO
+TODO.md
+
 # Distribution / packaging
 .Python
 build/

@@ -1,9 +1,36 @@
+"""Timer class for doing scheduled tasks"""
+
 import time
 import datetime
 
+from typing import Protocol
+
+
+class TimerEvent(Protocol):
+    """
+    Provides interface for scheduled timer events
+
+    event_timer_elapsed()
+    vent_timer_reset()
+    """
+    def event_timer_elapsed(self):
+        ...
+
+    def event_timer_reset(self):
+        ...
+
 
 class Timer:
-    def __init__(self, delay: int, parent):
+    """
+    Timer class with scheduled task.
+
+    delay: int
+        task frequency in seconds
+    parent: TimerEvent
+        an object that implements 'TimerEvent' protocol
+    """
+
+    def __init__(self, delay: int, parent: TimerEvent):
         self.delay = delay
         self.parent = parent
 
@@ -23,8 +50,8 @@ class Timer:
 
         while self.active:
             try:
-                if self._time_to_save():
-                    self.parent.event_save()
+                if self._is_it_time():
+                    self.parent.event_timer_elapsed()
                     self._reset_timer()
             except KeyboardInterrupt as e:
                 return 1
@@ -33,10 +60,16 @@ class Timer:
         self._start_time = time.time()
         self.parent.event_timer_reset()
 
-    def _time_to_save(self) -> bool:
+    def _is_it_time(self) -> bool:
         return self.elapsed_time == float(self.delay)
 
     def save_time_estimated(self) -> str:
+        """
+        Target time of an upcoming scheduled task
+
+        format:
+        '%H:%M:%S %Y-%m-%d'
+        """
         now = datetime.datetime.now()
         t = now + datetime.timedelta(seconds=self.delay)
         return t.strftime("%H:%M:%S %Y-%m-%d")
