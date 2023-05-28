@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import keyboard
+from autosave.timer import Timer
 
 
 def main() -> int:
+    timer = Timer()
 
     return 0
 
