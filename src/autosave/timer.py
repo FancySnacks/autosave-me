@@ -52,7 +52,7 @@ class Timer:
                     self.parent.event_timer_elapsed()
                     self._reset_timer()
             except KeyboardInterrupt as e:
-                return 1
+                return 0
 
     def _reset_timer(self):
         self._start_time = time.time()
