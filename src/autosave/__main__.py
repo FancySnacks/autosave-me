@@ -12,7 +12,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     parser.parse_args(argv)
 
     app = App()
-    timer = Timer(parent=app)
+    timer = Timer(app)
+
     app.start_timer(timer, delay=parser.args['time'])
 
 
