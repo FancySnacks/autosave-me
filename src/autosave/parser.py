@@ -5,6 +5,15 @@ from typing import Sequence
 
 
 class ArgParser:
+    """
+        usage: autosave [args]
+
+        Autosave is a script that automatically creates 'ctrl-s' input event to save current work
+
+        options:
+          -h, --help            show this help message and exit
+          -t TIME, --time TIME  Time between each autosave in seconds
+    """
     def __init__(self):
         self._parser = ArgumentParser(prog="Autosave-me",
                                       usage="autosave [args]",
