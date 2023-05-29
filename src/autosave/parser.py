@@ -1,4 +1,4 @@
-"""Argument parser"""
+"""Parser class for console arguments"""
 
 from argparse import ArgumentParser
 from typing import Sequence
