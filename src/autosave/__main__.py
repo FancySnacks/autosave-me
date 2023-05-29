@@ -4,12 +4,10 @@ from autosave.app import App
 from autosave.timer import Timer
 
 
-def main() -> int:
+def main() -> None:
     app = App()
     timer = Timer(parent=app)
     app.start_timer(timer)
-
-    return 0
 
 
 if __name__ == '__main__':
